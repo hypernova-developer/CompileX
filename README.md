@@ -16,6 +16,7 @@
 Ensure you have the necessary compilers installed on your system:
 * MinGW-w64 (for C, C++, and Fortran)
 * .NET SDK (for C#)
+* Python Interpreter
 
 ### 2. Configuration
 * Create a file named **compilex_config.bat** in the same directory as the script.
@@ -40,7 +41,7 @@ To compile and run a file instantly, use the following syntax:
 ## 🏗 Developer Information
 
 * **Developer:** hypernova-developer
-* **Project Status:** Version 1.0.0 "Pure Performance Edition"
+* **Project Status:** Version v2.0.0 "Multi-Language Integration"
 * **Environment:** Optimized for high-end systems.
 * **Philosophy:** Speed, Efficiency, and Minimalist Execution.
 
