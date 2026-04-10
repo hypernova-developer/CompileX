@@ -13,6 +13,7 @@ if not exist "!filename!" (
     echo [CompileX] Error: Source file "!filename!" not found.
     exit /b 1
 )
+if /I "!extension!" == ".py" goto :run_python
 if /I "!extension!" == ".cpp" (set "LANG=C++" & set "COMPILER=%GXX_PATH%" & set "FLAGS=-std=c++23 -O3 -s -I"%SYNTAX_INCLUDE%" -o "!exe_name!"")
 if /I "!extension!" == ".c" (set "LANG=C" & set "COMPILER=%GCC_PATH%" & set "FLAGS=-O3 -s -I"%SYNTAX_INCLUDE%" -o "!exe_name!"")
 if /I "!extension!" == ".f90" (set "LANG=Fortran" & set "COMPILER=%GFORTRAN_PATH%" & set "FLAGS=-O3 -o "!exe_name!"")
@@ -36,12 +37,19 @@ if !comp_status! equ 0 (
     echo [%date% %time%] Failed to compile !filename! (!LANG!^) >> compilex_history.log
     exit /b 1
 )
+:run_python
+echo [CompileX] Executing !filename! (Python)...
+echo ---------------------------------------------------
+"%PYTHON_PATH%" "!filename!"
+echo ---------------------------------------------------
+echo [%date% %time%] Executed !filename! (Python) >> compilex_history.log
+exit /b 0
 :show_version
 echo ---------------------------------------------------
 echo [CompileX Engine]
-echo Version: 1.0.0 "Pure Performance Edition"
+echo Version: 2.0.0-LTS "Multi-Language Integration"
 echo Developer: hypernova-developer
-echo Focus: Raw Power, Speed and Minimalist Execution
+echo Focus: C++, C, Fortran, C#, Python
 echo ---------------------------------------------------
 exit /b 0
 :do_clean
