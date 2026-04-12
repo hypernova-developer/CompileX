@@ -1,49 +1,51 @@
-# CompileX Engine ⚙️
+## 🛡️ Part 1: Header & Features
 
-**CompileX** is the high-performance, minimalist compiler wrapper designed for developers who demand raw power and precision. Unlike its sibling Amour, CompileX strips away all emotional feedback to focus strictly on binary optimization and execution speed. It is the "Pure Performance" tool built within the SyntaX ecosystem.
+# CompileX Engine ⚙️ (v3.0.0-LTS)
 
-## 🚀 Key Features
+**CompileX** is a high-performance, C++ core compiler engine designed for developers who demand raw power, precision, and zero-dependency binaries. As the "Pure Power" heart of the SyntaX ecosystem, v3.0.0-LTS marks a major evolution: transitioning from a batch script to a standalone binary engine with integrated Raylib 5.5 graphics support and static linking capabilities.
 
-* **Advanced Optimization:** Automatically injects -O3 and -s (strip) flags to produce the smallest and fastest possible executables.
-* **Multi-Language Core:** Native support for C++23, C, Fortran 90, and C# (.NET).
-* **Industrial Output:** Minimalist, technical feedback designed for professional workflows.
-* **Smart Artifact Management:** Keeps track of every binary created, allowing for a surgical cleanup operation without touching your other files.
-* **Reliable Logging:** Maintains a detailed history of every compilation attempt for debugging and tracking.
+## 🚀 Key Features (v3.0.0-LTS "Raylib Edition")
+
+* **C++ Core Architecture:** Completely rewritten in C++ for maximum execution speed, replacing the legacy batch system.
+* **Raylib 5.5 Native Integration:** Automatically links Raylib, OpenGL, and Windows GDI headers/libraries. Build high-performance graphics applications with zero extra flags.
+* **"Nightmare-Slayer" (Standalone Binaries):** Injects `-static` flags to embed all necessary libraries within the executable. Say goodbye to "Missing DLL" errors on other machines.
+* **Industrial Optimization:** Injects `-std=c++23`, `-O3` (Maximum Speed), and `-s` (Strip Symbols) to produce the smallest and fastest binaries possible.
+* **Embedded Configuration:** All compiler paths and library directories are hardcoded into the engine kernel—no external `.bat` or `.config` files required for operation.
+* **Multi-Language Support:** Native support for C++23, C, Fortran 90, C#, and Python.
+
+## ⚔️ Part 2: Installation, Usage & Credits
 
 ## 🛠 Installation & Setup
 
-### 1. Prerequisites
-Ensure you have the necessary compilers installed on your system:
-* MinGW-w64 (for C, C++, and Fortran)
-* .NET SDK (for C#)
-* Python Interpreter
+### 1. The Power Source
+CompileX v3.0.0 is a standalone engine. It is pre-configured for high-end development environments with the following structure:
+* **MinGW-w64:** Located in `D:\mingw64\`
+* **Raylib 5.5:** Located in `D:\Libraries\Raylib\`
+* **SyntaX Headers:** Located in `E:\Developing\hypernova-developer\SyntaX\Fortran`
 
-### 2. Configuration
-* Create a file named **compilex_config.bat** in the same directory as the script.
-* Define your compiler paths and include directories inside this config file.
-* Example: set GXX_PATH=C:\path\to\g++.exe
-* Set your **SYNTAX_INCLUDE** path for custom library headers.
+### 2. Building the Engine from Source
+To deploy the engine binary, run this command in your terminal:
+`g++ compilex_engine.cpp -o compilex.exe -std=c++23 -O3 -s -static`
 
-### 3. Environment Setup
-* Add the directory containing **compilex.bat** to your System's **PATH** environment variable. This allows you to call the engine from any terminal window.
+### 3. Global Access
+Add the directory containing your compiled `compilex.exe` to your System's **PATH** environment variable. This allows the engine to be summoned from any terminal instantly.
 
 ## 💻 Usage & Commands
 
-To compile and run a file instantly, use the following syntax:
-**compilex filename.cpp**
+To compile, link, and execute any source file instantly, use:
+**`compilex <filename>.<ext>`**
 
 ### Available Commands:
-* **--version**: Check the current engine build and developer info.
-* **--help**: Display the manual and command list.
-* **--log**: Read the compilation history from compilex_history.log.
-* **--clean**: Purge all binaries listed in .compilex_built from the current folder.
+* **`--version`**: Display the engine build (v3.0.0-LTS), developer info, and core focus.
+* **`--log`**: Access the `compilex_history.log` to view a detailed history of all compilation operations.
+* **`--clean`**: (Planned for v3.1) Surgical cleanup of generated binaries listed in `.compilex_built`.
 
 ## 🏗 Developer Information
 
 * **Developer:** hypernova-developer
-* **Project Status:** Version v2.0.0 "Multi-Language Integration"
-* **Environment:** Optimized for high-end systems.
-* **Philosophy:** Speed, Efficiency, and Minimalist Execution.
+* **Project Status:** Version v3.0.0-LTS "C++ Core & Graphics Integration"
+* **Hardware Target:** Optimized for high-end systems (i7-13700H verified).
+* **Philosophy:** Pure Power, Zero Dependencies, Minimalist Execution.
 
 ---
 *Developed by **hypernova-developer***
