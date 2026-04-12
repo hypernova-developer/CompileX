@@ -47,5 +47,8 @@ To compile, link, and execute any source file instantly, use:
 * **Hardware Target:** Optimized for high-end systems (i7-13700H verified).
 * **Philosophy:** Pure Power, Zero Dependencies, Minimalist Execution.
 
+## v3.0.1-LTS Fixes
+- Fixed the error of "illegal characters" in v3.0.0-LTS
+
 ---
 *Developed by **hypernova-developer***
