@@ -42,16 +42,17 @@ int main(int argc, char* argv[]) {
     if (arg1 == "--version") {
         std::cout << "---------------------------------------------------" << std::endl;
         std::cout << "[CompileX Engine]" << std::endl;
-        std::cout << "Version: 3.0.0-LTS \"C++ Core & Raylib Integrated\"" << std::endl;
+        std::cout << "Version: 3.0.1-LTS \"Character-Safe Edition\"" << std::endl;
         std::cout << "Developer: hypernova-developer" << std::endl;
         std::cout << "Focus: C++, C, Fortran, C#, Python" << std::endl;
         std::cout << "---------------------------------------------------" << std::endl;
         return 0;
     }
 
-    fs::path source_path(arg1);
+    fs::path source_path = fs::path(reinterpret_cast<const char8_t*>(arg1.c_str()));
+    
     if (!fs::exists(source_path)) {
-        std::cout << "[CompileX] Error: Source file \"" << arg1 << "\" not found." << std::endl;
+        std::cout << "[CompileX] Error: Source file not found." << std::endl;
         return 1;
     }
 
@@ -62,20 +63,20 @@ int main(int argc, char* argv[]) {
 
     if (ext == ".cpp") {
         lang = "C++";
-        cmd = "\"" + cfg.gxx + "\" -std=c++23 -O3 -s -static -static-libgcc -static-libstdc++ -I\"" + cfg.syntax_inc + "\" -I\"" + cfg.raylib_inc + "\" \"" + arg1 + "\" -o \"" + exe_name + "\" -L\"" + cfg.raylib_lib + "\" -lraylib -lopengl32 -lgdi32 -lwinmm";
+        cmd = "\"\"" + cfg.gxx + "\" -std=c++23 -O3 -s -static -static-libgcc -static-libstdc++ -I\"" + cfg.syntax_inc + "\" -I\"" + cfg.raylib_inc + "\" \"" + arg1 + "\" -o \"" + exe_name + "\" -L\"" + cfg.raylib_lib + "\" -lraylib -lopengl32 -lgdi32 -lwinmm\"";
     } else if (ext == ".c") {
         lang = "C";
-        cmd = "\"" + cfg.gcc + "\" -O3 -s -static -static-libgcc -I\"" + cfg.syntax_inc + "\" \"" + arg1 + "\" -o \"" + exe_name + "\"";
+        cmd = "\"\"" + cfg.gcc + "\" -O3 -s -static -static-libgcc -I\"" + cfg.syntax_inc + "\" \"" + arg1 + "\" -o \"" + exe_name + "\"\"";
     } else if (ext == ".f90") {
         lang = "Fortran";
-        cmd = "\"" + cfg.gfortran + "\" -O3 -static \"" + arg1 + "\" -o \"" + exe_name + "\"";
+        cmd = "\"\"" + cfg.gfortran + "\" -O3 -static \"" + arg1 + "\" -o \"" + exe_name + "\"\"";
     } else if (ext == ".cs") {
         lang = "C#";
-        cmd = "\"" + cfg.csc + "\" /nologo /optimize+ /out:\"" + exe_name + "\" \"" + arg1 + "\"";
+        cmd = "\"\"" + cfg.csc + "\" /nologo /optimize+ /out:\"" + exe_name + "\" \"" + arg1 + "\"\"";
     } else if (ext == ".py") {
         std::cout << "[CompileX] Executing " << arg1 << " (Python)..." << std::endl;
         std::cout << "---------------------------------------------------" << std::endl;
-        int py_res = system(std::string("\"" + cfg.python + "\" \"" + arg1 + "\"").c_str());
+        int py_res = system(std::string("\"\"" + cfg.python + "\" \"" + arg1 + "\"\"").c_str());
         std::cout << "---------------------------------------------------" << std::endl;
         log_operation("Executed " + arg1 + " (Python)");
         return py_res;
