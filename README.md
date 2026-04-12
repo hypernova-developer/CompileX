@@ -46,4 +46,4 @@ To compile and run a file instantly, use the following syntax:
 * **Philosophy:** Speed, Efficiency, and Minimalist Execution.
 
 ---
-*Developed with **SyntaX Library Collection (SLC)***
+*Developed by **hypernova-developer***
